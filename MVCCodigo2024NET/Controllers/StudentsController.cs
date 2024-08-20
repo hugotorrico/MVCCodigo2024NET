@@ -21,10 +21,21 @@ namespace MVCCodigo2024NET.Controllers
         // GET: Students
         public async Task<IActionResult> Index()
         {
-              return _context.Students != null ? 
+            await Task.Delay(7000); // Simula un retraso de 5 segundos            
+            return _context.Students != null ? 
                           View(await _context.Students.ToListAsync()) :
-                          Problem("Entity set 'SchoolContext.Students'  is null.");
+                          Problem("Entity set 'SchoolContext.Students'  is null.");         
         }
+
+        public IActionResult Index2()
+        {
+            System.Threading.Thread.Sleep(7000); 
+            return _context.Students != null ?
+                        View(_context.Students.ToList()) :
+                        Problem("Entity set 'SchoolContext.Students'  is null.");
+        }
+
+
 
         // GET: Students/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -158,5 +169,48 @@ namespace MVCCodigo2024NET.Controllers
         {
           return (_context.Students?.Any(e => e.StudentID == id)).GetValueOrDefault();
         }
+
+
+        void AguaCalentar() { }
+        void Comprar() { }
+        void Freir() { }
+        void Preparar() { }
+        void HacerDesayuno()
+        {
+            AguaCalentar();
+
+            Comprar();
+
+            Freir();
+
+            Preparar();
+
+
+        }
+
+        async void  AguaCalentarAsync() { }
+        async void ComprarAsync() { }
+        async void FreirAsync() { }
+        async void PrepararAsync() { }
+
+        async void HacerDesayunoAsync()
+        {
+             AguaCalentarAsync();
+             ComprarAsync();
+             FreirAsync();
+             PrepararAsync();
+        }
+      
+        async void EnviarEmail() { }
+        async void EnviarPush() { }
+        async void EnviarSMS() { }
+        async void EnviarTodo()
+        {
+            EnviarEmail();
+            EnviarPush();
+            EnviarSMS();
+        }
+
+
     }
 }
