@@ -20,8 +20,21 @@
     <input type="text" id="miInput" value="Valor inicial" /><br />
     <a href="https://www.google.com" id="miEnlace">Ir a Google</a>
     <br />
+
     <button id="mostrar">Mostrar Mensaje</button>
+    <br />
     <button id="cambiar">Cambiar Textos</button>
+    <br />
+    <input type="text" id="valor1" value="" />
+    <br />
+    <input type="text" id="valor2" value="" />
+    <br />
+    <button id="sumar">Sumar</button>
+    <br />
+    <input type="text" id="resultado" value="" />
+    <br />
+
+
 
 
 
@@ -40,6 +53,11 @@
             $('#miInput').val('Nuevo valor con JQUERY');
             // Cambiar el atributo href del enlace
             $('#miEnlace').attr('href', 'https://www.bing.com');
+        });
+        $('#sumar').click(function () {
+            var valor1 = $('#valor1').val();
+            var valor2 = $('#valor2').val();           
+            $('#resultado').val(eval(valor1) + eval(valor2));
         });
 
        
