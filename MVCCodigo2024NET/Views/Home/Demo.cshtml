@@ -9,11 +9,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clase Básica de jQuery</title>
-    <!-- Incluir jQuery desde CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    @* <script src="~/lib/jquery/dist/jquery.min.js"></script> *@
-    @* <script src="~/lib/jquery/dist/jquery.js"></script> *@
-
+   <script src="~/lib/jquery/dist/jquery.js"></script> 
+  
     <style>
         .rojo {
             color: red;
@@ -22,6 +19,16 @@
         .verde {
             color: green;
         }
+         p {
+    margin: 8px;
+    font-size: 16px;
+  }
+  .selected {
+    color: blue;
+  }
+  .highlight {
+    background: yellow;
+  }
     </style>
 </head>
 <body>
@@ -66,10 +73,16 @@
     <button id="mensaje4" class="clase2">Mensaje4</button>
 
 
+    <p>Hello</p>
+<p>and</p>
+<p>Goodbye</p
+
 
 </body>
 <script type="text/javascript">
     $(document).ready(function () {
+
+        $("p").last().addClass("selected");
         $('.clase2').click(function () {
             alert('Bienvenido Codigo');            
         });        
