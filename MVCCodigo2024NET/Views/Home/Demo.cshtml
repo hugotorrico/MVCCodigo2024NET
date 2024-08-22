@@ -17,22 +17,32 @@
 <body>
 
     <p id="miTexto">Texto inicial</p>
-    <input type="text" id="miInput" value="Valor inicial" />
+    <input type="text" id="miInput" value="Valor inicial" /><br />
     <a href="https://www.google.com" id="miEnlace">Ir a Google</a>
+    <br />
+    <button id="mostrar">Mostrar Mensaje</button>
+    <button id="cambiar">Cambiar Textos</button>
 
-    
+
+
 </body>
 <script type="text/javascript">
     $(document).ready(function () {
+       
+        $('#mostrar').click(function () {
+            alert('Estoy haciendo click');
+        });
 
-        // Cambiar el texto del párrafo
-        $('#miTexto').text('Nuevo texto con JQUERY');
+        $('#cambiar').click(function () {
+            // Cambiar el texto del párrafo
+            $('#miTexto').text('Nuevo texto con JQUERY');
+            // Cambiar el valor del input
+            $('#miInput').val('Nuevo valor con JQUERY');
+            // Cambiar el atributo href del enlace
+            $('#miEnlace').attr('href', 'https://www.bing.com');
+        });
 
-        // Cambiar el valor del input
-        $('#miInput').val('Nuevo valor con JQUERY');
-
-        // Cambiar el atributo href del enlace
-        $('#miEnlace').attr('href', 'https://www.bing.com');
+       
     });
 </script>
 </html>
