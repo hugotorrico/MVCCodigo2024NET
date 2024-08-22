@@ -13,6 +13,16 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @* <script src="~/lib/jquery/dist/jquery.min.js"></script> *@
     @* <script src="~/lib/jquery/dist/jquery.js"></script> *@
+
+    <style>
+        .rojo {
+            color: red;
+        }
+
+        .verde {
+            color: green;
+        }
+    </style>
 </head>
 <body>
 
@@ -33,15 +43,50 @@
     <br />
     <input type="text" id="resultado" value="" />
     <br />
+    <div id="contenedor">
+        <p>Elemento 1</p>
+    </div>
+    <button id="agregar">Agregar Elemento</button>
+    <button id="eliminar">Eliminar Elemento</button>
+    <br />
+    <p id="miTextoEstilo" class="rojo">Texto con clase "rojo"</p>
+    <button id="cambiarClase">Cambiar Clase</button>
+  
+    <br />
+    <input type="text" id="nombres" class="clase" value="" />
+    <input type="text" id="apellidos" class="clase1" value="" />
+    <input type="text" id="edad" class="clase1" value="" />
+    <input type="text" id="sexo" class="clase1" value="" />
+    <button id="limpiar">Limpiar</button>
+    <button id="limpiar2">Limpiar2</button>
 
-
+    <button id="mensaje1" class="clase2" >Mensaje1</button><br />
+    <button id="mensaje2" class="clase2">Mensaje2</button><br />
+    <button id="mensaje3" class="clase2">Mensaje3</button><br />
+    <button id="mensaje4" class="clase2">Mensaje4</button>
 
 
 
 </body>
 <script type="text/javascript">
     $(document).ready(function () {
-       
+        $('.clase2').click(function () {
+            alert('Bienvenido Codigo');            
+        });        
+
+        $('#limpiar').click(function () {
+            alert('Estoy en Limpiar Id');
+            $('#nombres').val('');
+            $('#apellidos').val('');
+            $('#edad').val('');
+            $('#sexo').val('');            
+        });
+
+        $('#limpiar2').click(function () {
+            $('.clase1').val('');           
+        });
+
+
         $('#mostrar').click(function () {
             alert('Estoy haciendo click');
         });
@@ -58,6 +103,16 @@
             var valor1 = $('#valor1').val();
             var valor2 = $('#valor2').val();           
             $('#resultado').val(eval(valor1) + eval(valor2));
+        });
+        $('#agregar').click(function () {
+            $('#contenedor').append('<p>Elemento nuevo</p>');
+        });
+        $('#eliminar').click(function () {
+            $('#contenedor p:last-child').remove();
+        });
+        $('#cambiarClase').click(function () {
+            // alert('prueba');
+            $('#miTextoEstilo').toggleClass('verde');
         });
 
        
