@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+<!-- Incluir jQuery en un archivo HTML -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase Básica de jQuery</title>
+    <!-- Incluir jQuery desde CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @* <script src="~/lib/jquery/dist/jquery.min.js"></script> *@
+    @* <script src="~/lib/jquery/dist/jquery.js"></script> *@
+</head>
+<body>
+
+    <p id="miTexto">Texto inicial</p>
+    <input type="text" id="miInput" value="Valor inicial" />
+    <a href="https://www.google.com" id="miEnlace">Ir a Google</a>
+
+    
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        // Cambiar el texto del párrafo
+        $('#miTexto').text('Nuevo texto con JQUERY');
+
+        // Cambiar el valor del input
+        $('#miInput').val('Nuevo valor con JQUERY');
+
+        // Cambiar el atributo href del enlace
+        $('#miEnlace').attr('href', 'https://www.bing.com');
+    });
+</script>
+</html>
