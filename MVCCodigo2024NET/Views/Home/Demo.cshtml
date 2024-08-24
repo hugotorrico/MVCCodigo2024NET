@@ -64,7 +64,7 @@
     <input type="text" id="apellidos" class="clase1" value="" />
     <input type="text" id="edad" class="clase1" value="" />
     <input type="text" id="sexo" class="clase1" value="" />
-    <button id="limpiar">Limpiar</button>
+    <button id="limpiar" >Limpiar</button>
     <button id="limpiar2">Limpiar2</button>
 
     <button id="mensaje1" class="clase2" >Mensaje1</button><br />
@@ -82,18 +82,23 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
+        let nombre = 'Hugo';
         $("p").last().addClass("selected");
         $('.clase2').click(function () {
             alert('Bienvenido Codigo');            
         });        
 
         $('#limpiar').click(function () {
+            
             alert('Estoy en Limpiar Id');
+            let = 'Torrico';
             $('#nombres').val('');
             $('#apellidos').val('');
             $('#edad').val('');
             $('#sexo').val('');            
         });
+
+        alert(nombre);
 
         $('#limpiar2').click(function () {
             $('.clase1').val('');           

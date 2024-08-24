@@ -26,6 +26,16 @@ namespace MVCCodigo2024NET.Controllers
 
             return View();
         }
+        public IActionResult Validaciones()
+        {
+
+            return View();
+        }
+        public IActionResult Validaciones2()
+        {
+
+            return View();
+        }
 
         public IActionResult Privacy()
         {
