@@ -29,7 +29,7 @@ namespace MVCCodigo2024NET.Controllers
 
         public IActionResult Index2()
         {
-            System.Threading.Thread.Sleep(7000); 
+            //System.Threading.Thread.Sleep(7000); 
             return _context.Students != null ?
                         View(_context.Students.ToList()) :
                         Problem("Entity set 'SchoolContext.Students'  is null.");
@@ -60,7 +60,7 @@ namespace MVCCodigo2024NET.Controllers
         {
             return View();
         }
-
+        
         // POST: Students/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.

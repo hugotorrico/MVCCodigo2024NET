@@ -34,30 +34,8 @@
         if (isValid) {
             alert('Formulario enviado con éxito.');
             // Aquí puedes enviar el formulario usando AJAX o simplemente dejar que se envíe normalmente
-            /*this.submit();*/
-
-            $.ajax({
-                type: "POST",
-                url: "/Home/SubmitForm",
-                data: {
-                    name: name,
-                    email: email
-                },
-                success: function (response) {
-                    //$('#message').text(response.message);
-                    
-                },
-                error: function () {
-                    //$('#message').text("Hubo un error al enviar el formulario.");
-                    alert('Hubo un error al enviar el formulario.');
-
-                }
-            });
-
-            
+            this.submit();                      
         }
-
-
 
     });
 });
