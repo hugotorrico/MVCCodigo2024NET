@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+
     $('#contactForm').validate({
         rules: {
             name: {
@@ -18,12 +19,12 @@
         },
         messages: {
             name: {
-                required: "Por favor, ingrese su nombre.",
+                required: "Por favor, ingrese su nombre",
                 minlength: "El nombre debe tener al menos 2 caracteres."
             },
             email: {
                 required: "Por favor, ingrese su correo electrónico.",
-                email: "Por favor, ingrese un correo electrónico válido."
+                email: "Por favor, ingrese un correo electrónico"
             },
             phone: {
                 required: "Por favor, ingrese su número de teléfono.",
