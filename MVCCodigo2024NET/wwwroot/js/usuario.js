@@ -10,12 +10,53 @@
 
         // Validar el campo de nombre
         const name = $('#name').val().trim();
+       
         if (name === '') {
             $('#nameError').text('El nombre es obligatorio.');
             isValid = false;
         } else {
-            $('#nameError').text('');
+
+            if (name.length < 5) {
+                $('#nameError').text('El nombre debe tener al menos 5 caracteres.');
+                isValid = false;
+            }
+            else {
+                $('#nameError').text('');
+            }           
         }
+
+        const password = $('#password').val().trim();
+        if (password === '') {
+            $('#passwordError').text('El password es obligatorio.');
+            isValid = false;
+        } else {
+            if (password.length < 8) {
+                $('#passwordError').text('El password debe tener al menos 8 caracteres.');
+                isValid = false;
+            }
+            else {
+                $('#passwordError').text('');
+            }           
+            
+        }
+
+        const password2 = $('#password2').val().trim();
+        if (password2 === '') {
+            $('#password2Error').text('El password repetido es obligatorio.');
+            isValid = false;
+        } else {
+            $('#password2Error').text('');
+        }
+
+
+        if (password != password2) {
+            isValid = false;
+            $('#password2Error').text('Los password no coinciden');         
+        }
+        else {
+            $('#password2Error').text('');
+        }
+
 
         // Validar el campo de correo electrónico
         const email = $('#email').val().trim();

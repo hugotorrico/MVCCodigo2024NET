@@ -31,11 +31,24 @@ namespace MVCCodigo2024NET.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public JsonResult SubmitForm(string name, string email)
+        {
+            // Aquí puedes agregar lógica para manejar los datos del formulario, como guardarlos en una base de datos
+            // Para este ejemplo, simplemente devolvemos un mensaje de éxito
+
+            return Json(new { message = "Formulario enviado con éxito. Gracias, " + name + "!" });
+        }
+
+
         public IActionResult Validaciones2()
         {
 
             return View();
         }
+
+       
 
         public IActionResult Privacy()
         {
