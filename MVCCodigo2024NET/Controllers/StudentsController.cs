@@ -21,7 +21,8 @@ namespace MVCCodigo2024NET.Controllers
         // GET: Students
         public async Task<IActionResult> Index()
         {
-            await Task.Delay(7000); // Simula un retraso de 5 segundos            
+            await Task.Delay(7000); // Simula un retraso de 5 segundos
+                                    // 
             return _context.Students != null ? 
                           View(await _context.Students.ToListAsync()) :
                           Problem("Entity set 'SchoolContext.Students'  is null.");         
@@ -30,7 +31,7 @@ namespace MVCCodigo2024NET.Controllers
         public IActionResult Index2()
         {
             //System.Threading.Thread.Sleep(7000); 
-            return _context.Students != null ?
+         return _context.Students != null ?
                         View(_context.Students.ToList()) :
                         Problem("Entity set 'SchoolContext.Students'  is null.");
         }

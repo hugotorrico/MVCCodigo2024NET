@@ -1,0 +1,40 @@
+﻿<div>
+    <form id="createStudentForm">
+        <div class="form-group">
+            <label for="firstName">Nombre:</label>
+            <input type="text" id="firstName" name="firstName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="lastName">Apellido:</label>
+            <input type="text" id="lastName" name="lastName" class="form-control" />
+        </div>
+        <button type="button" id="submitStudentButton" class="btn btn-success">Guardar</button>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#submitStudentButton').click(function () {
+            var firstName = $('#firstName').val();
+            var lastName = $('#lastName').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/StudentAjax/SubmitForm",
+                data: {
+                    firstName: firstName,
+                    lastName: lastName
+                },
+                success: function (response) {
+                    alert(response.message);
+                    $('#createStudentModal').modal('hide');
+
+                    //location.reload(); // Recargar la página para ver la lista actualizada
+                },
+                error: function () {
+                    alert('Hubo un error al crear el estudiante.');
+                }
+            });
+        });
+    });
+</script>

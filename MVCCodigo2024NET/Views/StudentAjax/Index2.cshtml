@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewData["Title"] = "Lista de Estudiantes";
+}
+
+<h2>Lista de Estudiantes</h2>
+
+<button id="listStudentsButton" class="btn btn-primary">Listar Estudiantes</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Número de Documento</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Aquí se llenará la tabla con los estudiantes -->
+    </tbody>
+</table>
+
+<button id="createStudentButton" class="btn btn-success">Crear Estudiante</button>
+
+<!-- Modal para crear estudiante -->
+<div class="modal fade" id="createStudentModal" tabindex="-1" role="dialog" aria-labelledby="createStudentLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createStudentLabel">Crear Estudiante</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- El contenido del modal se carga aquí -->
+                @* Si quiero usar sin la vista parcial, descomento esto *@
+                @* <div>
+                    <form id="createStudentForm">
+                        <div class="form-group">
+                            <label for="firstName">Nombre HUGO:</label>
+                            <input type="text" id="firstName" name="firstName" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Apellido:</label>
+                            <input type="text" id="lastName" name="lastName" class="form-control" />
+                        </div>
+                        <button type="button" id="submitStudentButton" class="btn btn-success">Guardar</button>
+                    </form>
+                </div> *@
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        // Cargar el contenido del modal para crear estudiante
+        $('#createStudentButton').click(function () {
+
+            //Si quiero mostrar sin usar la vista parcial
+            // $('#createStudentModal').modal('show');
+            $.ajax({
+                type: "GET",
+                url: "/StudentAjax/CreateStudent",
+                success: function (response) {
+                    $('.modal-body').html(response);
+                    $('#createStudentModal').modal('show');
+                },
+                error: function () {
+                    alert('Hubo un error al cargar el formulario.');
+                }
+            });
+        });
+
+        // Listar estudiantes y actualizar la tabla
+        $('#listStudentsButton').click(function () {
+            $.ajax({
+                type: "GET",
+                url: "/StudentAjax/GetStudents",
+                success: function (students) {
+                    var tableBody = $('table tbody');
+                    tableBody.empty(); // Vaciar la tabla
+
+                    students.forEach(function (student) {
+                        var newRow = `
+                                <tr>
+                                    <td>${student.studentID}</td>
+                                    <td>${student.firstName}</td>
+                                    <td>${student.lastName}</td>
+                                    <td>${student.documentNumber}</td>
+                                </tr>`;
+                        tableBody.append(newRow);
+                    });
+                },
+                error: function () {
+                    alert('Hubo un error al listar los estudiantes.');
+                }
+            });
+        });
+    });
+</script>
