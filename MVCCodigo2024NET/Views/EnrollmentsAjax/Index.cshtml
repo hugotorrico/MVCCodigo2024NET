@@ -36,10 +36,10 @@
         });
 
         function loadEnrollments() {
-
+            var valor = 'prueba';
             $.ajax({
                 type: "GET",
-                url: "/EnrollmentsAjax/GetEnrollments",
+                url: "/EnrollmentsAjax/GetEnrollments?valor="+valor,
                 success: function (enrollments) {
 
                     var tableBody = $('table tbody');

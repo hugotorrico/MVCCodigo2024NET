@@ -24,7 +24,7 @@ namespace MVCCodigo2024NET.Controllers
             return View();
         }
         [HttpGet] // Decorador para manejar solicitudes GET        
-        public IActionResult GetEnrollments()
+        public IActionResult GetEnrollments(string valor)
         {
             var enrollments = _context.Enrollments
                 .Include(x=>x.Course)
@@ -50,6 +50,26 @@ namespace MVCCodigo2024NET.Controllers
                 Number=x.Number,
                 Student=x.Student.FirstName + " " + x.Student.LastName,
                 Course=x.Course.Name
+            }).ToList();
+
+            return Json(model);
+        }
+
+        [HttpGet] // Decorador para manejar solicitudes GET    
+        public IActionResult GetEnrollments3()
+        {
+            var enrollments = _context.Enrollments
+                .Include(x => x.Course)
+                .Include(x => x.Student)
+                .ToList();
+            
+            var model = enrollments.Select(x => new EnrollmentModel
+            {
+                EnrollmentID = x.EnrollmentID,
+                Date = x.Date,
+                Number = x.Number,
+                Student = x.Student.FirstName + " " + x.Student.LastName,
+                Course = x.Course.Name
             }).ToList();
 
             return Json(model);
