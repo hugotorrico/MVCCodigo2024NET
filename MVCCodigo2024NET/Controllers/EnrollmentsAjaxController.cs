@@ -43,7 +43,7 @@ namespace MVCCodigo2024NET.Controllers
                 query = query.Where(x => x.Student.FirstName.Contains(filter));
 
 
-            return Json(query.ToList()); ;
+            return Json(query.ToList()); 
         }
 
         [HttpGet] // Decorador para manejar solicitudes GET        
