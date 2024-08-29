@@ -18,6 +18,8 @@ namespace MVCCodigo2024NET.Controllers
             var students = _context.Students.ToList();
             return View(students);
         }
+
+        //Todo con AJAX
         public IActionResult Index2()
         {
             

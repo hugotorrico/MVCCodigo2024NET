@@ -16,6 +16,10 @@ namespace MVCCodigo2024NET.Controllers
             var courses = _context.Courses.ToList();
             return View(courses);
         }
+        public IActionResult IndexAjax()
+        {            
+            return View();
+        }
 
         public IActionResult CreateCourse()
         {
@@ -48,6 +52,13 @@ namespace MVCCodigo2024NET.Controllers
           
 
            
+        }
+
+        [HttpGet] // Decorador para manejar solicitudes GET
+        public IActionResult GetCourses()
+        {
+            var courses = _context.Courses.ToList();
+            return Json(courses);
         }
     }
 }

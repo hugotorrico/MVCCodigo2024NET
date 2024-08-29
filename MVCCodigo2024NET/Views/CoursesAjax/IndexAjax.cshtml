@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Lista de Cursos";
+}
+
+<h2>Lista de Estudiantes</h2>
+
+<button id="listCoursesButton" class="btn btn-primary">Listar Cursos</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Creditos</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Aquí se llenará la tabla con los estudiantes -->
+    </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $('#listCoursesButton').click(function () {
+
+            $.ajax({
+                type: "GET",
+                url: "/CoursesAjax/GetCourses",
+                success: function (courses) {
+                    console.log(courses);
+
+                    var tableBody = $('table tbody');
+                    tableBody.empty(); // Vaciar la tabla
+
+                    courses.forEach(function (course) {
+                        var newRow = `
+                                    <tr>
+                                            <td>${course.courseID}</td>
+                                            <td>${course.name}</td>
+                                            <td>${course.description}</td>
+                                            <td>${course.credit}</td>
+                                    </tr>`;
+                        tableBody.append(newRow);
+                    });
+                    
+                },
+                error: function () {
+                    alert('Hubo un error al listar los estudiantes.');
+                }
+            });
+
+        });
+    
+    });
+
+</script>
