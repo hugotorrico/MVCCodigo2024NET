@@ -3,8 +3,9 @@
 }
 
 <h2>Lista de Matriculas</h2>
-
+<input type="text" id="txtFilter" />
 <button id="listEnrollmentsButton" class="btn btn-primary">Listar Matrículas</button>
+
 
 <table class="table">
     <thead>
@@ -36,10 +37,12 @@
         });
 
         function loadEnrollments() {
-            var valor = 'prueba';
+
+            var filterParameter = $('#txtFilter').val();
+
             $.ajax({
                 type: "GET",
-                url: "/EnrollmentsAjax/GetEnrollments?valor="+valor,
+                url: "/EnrollmentsAjax/GetEnrollments?filter=" + filterParameter,
                 success: function (enrollments) {
 
                     var tableBody = $('table tbody');

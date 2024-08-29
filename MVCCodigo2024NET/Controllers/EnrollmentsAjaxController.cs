@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MVCCodigo2024NET.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MVCCodigo2024NET.Controllers
 {
@@ -24,14 +25,25 @@ namespace MVCCodigo2024NET.Controllers
             return View();
         }
         [HttpGet] // Decorador para manejar solicitudes GET        
-        public IActionResult GetEnrollments(string valor)
+        public IActionResult GetEnrollments(string filter)
         {
-            var enrollments = _context.Enrollments
-                .Include(x=>x.Course)
-                .Include(x=>x.Student)
-                .ToList();            
 
-            return Json(enrollments);
+            //var enrollments = _context.Enrollments
+            //    .Include(x=>x.Course)
+            //    .Include(x=>x.Student)
+            //    .Where(x=>x.Student.FirstName.Contains(filter) 
+            //           || string.IsNullOrWhiteSpace(filter))
+            //    .ToList();
+
+
+            IQueryable<Enrollment> query = _context.Enrollments
+                                  .Include(x => x.Student)
+                                  .Include(x => x.Course);
+            if (!string.IsNullOrEmpty(filter))
+                query = query.Where(x => x.Student.FirstName.Contains(filter));
+
+
+            return Json(query.ToList()); ;
         }
 
         [HttpGet] // Decorador para manejar solicitudes GET        
